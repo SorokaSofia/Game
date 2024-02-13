@@ -6,3 +6,4 @@ git branch -M main
 git remote add origin https://github.com/SorokaSofia/Game.git
 git push -u origin main
 hello
+s
