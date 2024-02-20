@@ -4,6 +4,7 @@ import pygame
 import math
 import sys
 
+
 pygame.init()
 pygame.mixer.init()  # Ініціалізація для звуку
 
@@ -1341,6 +1342,3 @@ pygame.quit()
 game_loop()
 
 
-
-
-# sound effects, restart and winning messages
