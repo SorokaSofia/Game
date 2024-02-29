@@ -3,11 +3,12 @@ from board import boards
 import pygame
 import sys
 import math
-import matplotlib
+
 
 
 pygame.init()
 pygame.mixer.init()  # Ініціалізація для звуку
+
 
 WIDTH, HEIGHT = 900, 950
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -15,7 +16,8 @@ pygame.display.set_caption("PacMan")
 
 # Завантаження ресурсів
 font = pygame.font.Font(None, 48)
-menu_sound = pygame.mixer.Sound('gta_san_andreas_01 - Michael Hunter - Theme From San Andreas.mp3')  # Замініть на шлях до вашого звукового файлу
+menu_sound = pygame.mixer.Sound('Paramind_cotton_eye_joe_mashup.mp3') 
+menu_sound.set_volume(0.012)
 
 # Завантаження фонового зображення
 background_image = pygame.image.load('assets/background_image/Background.jpg')  # Замініть 'background.jpg' на шлях до вашого фонового зображення
@@ -40,7 +42,9 @@ def render_multi_color_text(text, font, colors):
 running_game = False  # Змінна для керування станом гри
 
 def start_menu():
-    menu_sound.play(-1)  # Відтворення музики у фоновому режимі
+    menu_sound.set_volume(0.012)
+    menu_sound.stop() 
+    menu_sound.play(-1)
     global running_game
     running = True
     while running:
@@ -126,11 +130,11 @@ timer = pygame.time.Clock()
 fps = 60
 font = pygame.font.Font('freesansbold.ttf', 20)
 level = copy.deepcopy(boards)
-color = 'blue'
+color = 'orange'
 PI = math.pi
 player_images = []
 for i in range(1, 5):
-    player_images.append(pygame.transform.scale(pygame.image.load(f'assets/player_images/{i}.png'), (45, 45)))
+    player_images.append(pygame.transform.scale(pygame.image.load(f'assets/player_images/1.png'), (55, 55)))
 blinky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/red.png'), (45, 45))
 pinky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/pink.png'), (45, 45))
 inky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/blue.png'), (45, 45))
@@ -836,7 +840,7 @@ def draw_board():
                                 [(j * num2 - (num2 * 0.4)) - 2, (i * num1 - (0.4 * num1)), num2, num1], 3 * PI / 2,
                                 2 * PI, 3)
             if level[i][j] == 9:
-                pygame.draw.line(screen, 'white', (j * num2, i * num1 + (0.5 * num1)),
+                pygame.draw.line(screen, 'orange', (j * num2, i * num1 + (0.5 * num1)),
                                  (j * num2 + num2, i * num1 + (0.5 * num1)), 3)
 
 
@@ -1015,7 +1019,7 @@ while run:
     else:
         moving = True
 
-    screen.fill('black')
+    screen.fill('#3d3d3d')
     draw_board()
     center_x = player_x + 23
     center_y = player_y + 24
@@ -1045,7 +1049,7 @@ while run:
         if 1 in level[i] or 2 in level[i]:
             game_won = False
 
-    player_circle = pygame.draw.circle(screen, 'black', (center_x, center_y), 20, 2)
+    player_circle = pygame.draw.circle(screen, '#3d3d3d', (center_x, center_y), 20, 2)
     draw_player()
     blinky = Ghost(blinky_x, blinky_y, targets[0], ghost_speeds[0], blinky_img, blinky_direction, blinky_dead,
                    blinky_box, 0)
