@@ -17,10 +17,10 @@ pygame.display.set_caption("PacMan")
 # Завантаження ресурсів
 font = pygame.font.Font(None, 48)
 menu_sound = pygame.mixer.Sound('Paramind_cotton_eye_joe_mashup.mp3') 
-menu_sound.set_volume(0.012)
+menu_sound.set_volume(0.013)
 
 # Завантаження фонового зображення
-background_image = pygame.image.load('assets/background_image/Background.jpg')  # Замініть 'background.jpg' на шлях до вашого фонового зображення
+background_image = pygame.image.load('assets/background_image/Background.jpg') 
 background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))  # Масштабування зображення до розміру екрану
 
 colors = [pygame.Color('Red'), pygame.Color('Green'), pygame.Color('Blue'), pygame.Color('Yellow')]
@@ -42,7 +42,7 @@ def render_multi_color_text(text, font, colors):
 running_game = False  # Змінна для керування станом гри
 
 def start_menu():
-    menu_sound.set_volume(0.012)
+    menu_sound.set_volume(0.013)
     menu_sound.stop() 
     menu_sound.play(-1)
     global running_game
@@ -130,28 +130,28 @@ timer = pygame.time.Clock()
 fps = 60
 font = pygame.font.Font('freesansbold.ttf', 20)
 level = copy.deepcopy(boards)
-color = 'orange'
+color = 'violet'
 PI = math.pi
 player_images = []
 for i in range(1, 5):
     player_images.append(pygame.transform.scale(pygame.image.load(f'assets/player_images/1.png'), (55, 55)))
-blinky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/red.png'), (45, 45))
-pinky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/pink.png'), (45, 45))
-inky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/blue.png'), (45, 45))
-clyde_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/orange.png'), (45, 45))
-spooked_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/powerup.png'), (45, 45))
-dead_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/dead.png'), (45, 45))
+blinky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/red.png'), (60, 60))
+pinky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/pink.png'), (50, 50))
+inky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/blue.png'), (50, 50))
+clyde_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/orange.png'), (50, 50))
+spooked_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/powerup.png'), (35, 35))
+dead_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/dead.png'), (35, 35))
 player_x = 450
 player_y = 663
 direction = 0
-blinky_x = 56
-blinky_y = 58
+blinky_x = 76
+blinky_y = 49
 blinky_direction = 0
 inky_x = 440
 inky_y = 388
 inky_direction = 2
-pinky_x = 440
-pinky_y = 438
+pinky_x = 470
+pinky_y = 448
 pinky_direction = 2
 clyde_x = 440
 clyde_y = 438
@@ -777,7 +777,7 @@ class Ghost:
 
 
 def draw_misc():
-    score_text = font.render(f'Score: {score}', True, 'white')
+    score_text = font.render(f'Score: {score}', True, 'yellow')
     screen.blit(score_text, (10, 920))
     if powerup:
         pygame.draw.circle(screen, 'blue', (140, 930), 15)
@@ -840,7 +840,7 @@ def draw_board():
                                 [(j * num2 - (num2 * 0.4)) - 2, (i * num1 - (0.4 * num1)), num2, num1], 3 * PI / 2,
                                 2 * PI, 3)
             if level[i][j] == 9:
-                pygame.draw.line(screen, 'orange', (j * num2, i * num1 + (0.5 * num1)),
+                pygame.draw.line(screen, 'violet', (j * num2, i * num1 + (0.5 * num1)),
                                  (j * num2 + num2, i * num1 + (0.5 * num1)), 3)
 
 
@@ -1219,12 +1219,12 @@ while run:
             direction = 0
             direction_command = 0
             blinky_x = 56
-            blinky_y = 58
+            blinky_y = 49
             blinky_direction = 0
             inky_x = 440
             inky_y = 388
             inky_direction = 2
-            pinky_x = 440
+            pinky_x = 470
             pinky_y = 438
             pinky_direction = 2
             clyde_x = 440
@@ -1286,12 +1286,12 @@ while run:
                 direction = 0
                 direction_command = 0
                 blinky_x = 56
-                blinky_y = 58
+                blinky_y = 49
                 blinky_direction = 0
                 inky_x = 440
                 inky_y = 388
                 inky_direction = 2
-                pinky_x = 440
+                pinky_x = 470
                 pinky_y = 438
                 pinky_direction = 2
                 clyde_x = 440
