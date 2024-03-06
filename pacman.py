@@ -131,3 +131,12 @@ level = copy.deepcopy(boards)
 color = 'violet'
 PI = math.pi
 player_images = []
+
+for i in range(1, 5):
+    player_images.append(pygame.transform.scale(pygame.image.load(f'assets/player_images/1.png'), (55, 55)))
+blinky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/red.png'), (60, 60))
+pinky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/pink.png'), (50, 50))
+inky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/blue.png'), (50, 50))
+clyde_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/orange.png'), (50, 50))
+spooked_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/powerup.png'), (35, 35))
+dead_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/dead.png'), (35, 35))
