@@ -286,3 +286,44 @@ def draw_board():
             if level[i][j] == 9:
                 pygame.draw.line(screen, 'violet', (j * num2, i * num1 + (0.5 * num1)),
                                  (j * num2 + num2, i * num1 + (0.5 * num1)), 3)
+            screen.fill('#3d3d3d')
+            draw_board()
+    
+            center_x = player_x + 23
+            center_y = player_y + 24
+            if powerup:
+                ghost_speeds = [1, 1, 1, 1]
+            else:
+                ghost_speeds = [2, 2, 2, 2]
+            if eaten_ghost[0]:
+                ghost_speeds[0] = 2
+            if eaten_ghost[1]:
+                ghost_speeds[1] = 2
+            if eaten_ghost[2]:
+                ghost_speeds[2] = 2
+            if eaten_ghost[3]:
+                ghost_speeds[3] = 2
+            if blinky_dead:
+                ghost_speeds[0] = 4
+            if inky_dead:
+                ghost_speeds[1] = 4
+            if pinky_dead:
+                ghost_speeds[2] = 4
+            if clyde_dead:
+                ghost_speeds[3] = 4
+
+            game_won = True
+            for i in range(len(level)):
+                if 1 in level[i] or 2 in level[i]:
+                    game_won = False
+
+            player_circle = pygame.draw.circle(screen, '#3d3d3d', (center_x, center_y), 20, 2)
+            draw_player()
+            blinky = Ghost(blinky_x, blinky_y, targets[0], ghost_speeds[0], blinky_img, blinky_direction, blinky_dead,
+                        blinky_box, 0)
+            inky = Ghost(inky_x, inky_y, targets[1], ghost_speeds[1], inky_img, inky_direction, inky_dead,
+                        inky_box, 1)
+            pinky = Ghost(pinky_x, pinky_y, targets[2], ghost_speeds[2], pinky_img, pinky_direction, pinky_dead,
+                        pinky_box, 2)
+            clyde = Ghost(clyde_x, clyde_y, targets[3], ghost_speeds[3], clyde_img, clyde_direction, clyde_dead,
+                        clyde_box, 3)
