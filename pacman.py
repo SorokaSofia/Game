@@ -348,3 +348,39 @@ def draw_board():
             inky_x, inky_y, inky_direction = inky.move_clyde()
         clyde_x, clyde_y, clyde_direction = clyde.move_clyde()
     score, powerup, power_counter, eaten_ghost = check_collisions(score, powerup, power_counter, eaten_ghost)
+
+    if not powerup:
+        if (player_circle.colliderect(blinky.rect) and not blinky.dead) or \
+                (player_circle.colliderect(inky.rect) and not inky.dead) or \
+                (player_circle.colliderect(pinky.rect) and not pinky.dead) or \
+                (player_circle.colliderect(clyde.rect) and not clyde.dead):
+            if lives > 0:
+                lives -= 1
+                startup_counter = 0
+                powerup = False
+                power_counter = 0
+                player_x = 450
+                player_y = 663
+                direction = 0
+                direction_command = 0
+                blinky_x = 56
+                blinky_y = 58
+                blinky_direction = 0
+                inky_x = 440
+                inky_y = 388
+                inky_direction = 2
+                pinky_x = 440
+                pinky_y = 438
+                pinky_direction = 2
+                clyde_x = 440
+                clyde_y = 438
+                clyde_direction = 2
+                eaten_ghost = [False, False, False, False]
+                blinky_dead = False
+                inky_dead = False
+                clyde_dead = False
+                pinky_dead = False
+            else:
+                game_over = True
+                moving = False
+                startup_counter = 0
