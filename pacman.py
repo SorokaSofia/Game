@@ -327,3 +327,24 @@ def draw_board():
                         pinky_box, 2)
             clyde = Ghost(clyde_x, clyde_y, targets[3], ghost_speeds[3], clyde_img, clyde_direction, clyde_dead,
                         clyde_box, 3)
+
+    draw_misc()
+    targets = get_targets(blinky_x, blinky_y, inky_x, inky_y, pinky_x, pinky_y, clyde_x, clyde_y)
+
+    turns_allowed = check_position(center_x, center_y)
+    if moving:
+        player_x, player_y = move_player(player_x, player_y)
+        if not blinky_dead and not blinky.in_box:
+            blinky_x, blinky_y, blinky_direction = blinky.move_blinky()
+        else:
+            blinky_x, blinky_y, blinky_direction = blinky.move_clyde()
+        if not pinky_dead and not pinky.in_box:
+            pinky_x, pinky_y, pinky_direction = pinky.move_pinky()
+        else:
+            pinky_x, pinky_y, pinky_direction = pinky.move_clyde()
+        if not inky_dead and not inky.in_box:
+            inky_x, inky_y, inky_direction = inky.move_inky()
+        else:
+            inky_x, inky_y, inky_direction = inky.move_clyde()
+        clyde_x, clyde_y, clyde_direction = clyde.move_clyde()
+    score, powerup, power_counter, eaten_ghost = check_collisions(score, powerup, power_counter, eaten_ghost)
