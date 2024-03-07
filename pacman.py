@@ -384,7 +384,7 @@ def draw_board():
                 game_over = True
                 moving = False
                 startup_counter = 0
-                
+
     if powerup and player_circle.colliderect(blinky.rect) and eaten_ghost[0] and not blinky.dead:
         if lives > 0:
             powerup = False
@@ -525,3 +525,84 @@ def draw_board():
         clyde_dead = True
         eaten_ghost[3] = True
         score += (2 ** eaten_ghost.count(True)) * 100
+
+        if event.type == pygame.QUIT:
+            run = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_d:
+                direction_command = 0
+            if event.key == pygame.K_a:
+                direction_command = 1
+            if event.key == pygame.K_w:
+                direction_command = 2
+            if event.key == pygame.K_s:
+                direction_command = 3
+            if event.key == pygame.K_SPACE and (game_over or game_won):
+                powerup = False
+                power_counter = 0
+                lives -= 1
+                startup_counter = 0
+                player_x = 450
+                player_y = 663
+                direction = 0
+                direction_command = 0
+                blinky_x = 56
+                blinky_y = 49
+                blinky_direction = 0
+                inky_x = 440
+                inky_y = 388
+                inky_direction = 2
+                pinky_x = 470
+                pinky_y = 438
+                pinky_direction = 2
+                clyde_x = 440
+                clyde_y = 438
+                clyde_direction = 2
+                eaten_ghost = [False, False, False, False]
+                blinky_dead = False
+                inky_dead = False
+                clyde_dead = False
+                pinky_dead = False
+                score = 0
+                lives = 3
+                level = copy.deepcopy(boards)
+                game_over = False
+                game_won = False
+
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_RIGHT and direction_command == 0:
+                direction_command = direction
+            if event.key == pygame.K_LEFT and direction_command == 1:
+                direction_command = direction
+            if event.key == pygame.K_UP and direction_command == 2:
+                direction_command = direction
+            if event.key == pygame.K_DOWN and direction_command == 3:
+                direction_command = direction
+
+    if direction_command == 0 and turns_allowed[0]:
+        direction = 0
+    if direction_command == 1 and turns_allowed[1]:
+        direction = 1
+    if direction_command == 2 and turns_allowed[2]:
+        direction = 2
+    if direction_command == 3 and turns_allowed[3]:
+        direction = 3
+
+    if player_x > 900:
+        player_x = -47
+    elif player_x < -50:
+        player_x = 897
+
+    if blinky.in_box and blinky_dead:
+        blinky_dead = False
+    if inky.in_box and inky_dead:
+        inky_dead = False
+    if pinky.in_box and pinky_dead:
+        pinky_dead = False
+    if clyde.in_box and clyde_dead:
+        clyde_dead = False
+
+    pygame.display.flip()
+pygame.quit()
+
+game_loop()
