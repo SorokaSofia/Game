@@ -4,7 +4,7 @@ from freezegun import freeze_time
 import pytest
 
 @freeze_time("2023-04-13")
-def test_read_data():
+def test_read_data(monkeypatch):
     test_data = [
         ("Milk", "2023-03-10", "1.20"),
         ("Milk", "2023-04-10", "1.25"),
@@ -16,10 +16,9 @@ def test_read_data():
         content = '\n'.join([','.join(row) for row in test_data])
         return StringIO(content)
 
-    with pytest.monkeypatch.context() as m:
-        m.setattr("builtins.open", mock_open)
-        results = read_data("dummy_path.txt", "Milk")
-        assert results == [(datetime.date(2023, 4, 10), 1.25), (datetime.date(2023, 4, 12), 1.30)]
+    monkeypatch.setattr("builtins.open", mock_open)
+    results = read_data("dummy_path.txt", "Milk")
+    assert results == [(datetime.date(2023, 4, 10), 1.25), (datetime.date(2023, 4, 12), 1.30)]
 
 def test_analyze_price_changes():
     data = [(datetime.date(2023, 4, 10), 1.25), (datetime.date(2023, 4, 12), 1.30)]
