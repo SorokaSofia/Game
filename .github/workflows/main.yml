@@ -20,6 +20,9 @@ jobs:
       - name: Install pytest
         run: python -m pip install pytest
 
+      - name: Install pygame
+        run: pip install pygame
+
       - name: Run Pytest
         run: pytest  
 
