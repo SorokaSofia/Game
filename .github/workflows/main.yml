@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main  # Вказати основну гілку, з якої ви хочете запускати CI/CD
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest  # Обрана операційна система для виконання CI/CD
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2  # Крок для клонування репозиторію
+
+      - name: Set up Python
+        uses: actions/setup-python@v2  # Крок для налаштування Python
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Інсталяція залежностей
+
+      - name: Run Pytest
+        run: pytest  # Крок для запуску тестів Pytest
+
+      - name: Run Flake8
+        run: flake8  # Крок для перевірки стилю коду за допомогою Flake8

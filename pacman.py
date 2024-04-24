@@ -35,7 +35,6 @@ def render_multi_color_text(text, font, colors):
         x_offset += word_surface.get_width() + space  # Increase offset by the width of the word and space
     return images
 
-# Global variables
 running_game = False  # Variable for managing game state
 
 def start_menu():
