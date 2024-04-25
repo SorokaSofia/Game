@@ -22,3 +22,15 @@ def test_move_player_right(player_setup):
     # Assert the expected results
     assert new_x == x + player_speed
     assert new_y == y
+
+def test_move_player_left(player_setup):
+    x, y, player_speed = player_setup
+    direction = 1  # Direction left
+    turns_allowed = [False, True, False, False]  # Only left movement allowed
+
+    # Call the function under test
+    new_x, new_y = move_player(x, y, direction, turns_allowed, player_speed)
+
+    # Assert the expected results
+    assert new_x == x - player_speed
+    assert new_y == y
