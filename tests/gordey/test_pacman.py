@@ -7,3 +7,7 @@ def test_ghost_movement():
 
     # Move towards player
     assert ghost.move(player_position) == (4, 4), "Ghost should move towards the player"
+
+    # Change mode to frightened
+    ghost.mode = "frightened"
+    assert ghost.move(player_position) == (3, 3), "Ghost should move away from the player"
