@@ -25,6 +25,7 @@ font = pygame.font.Font(None, FONT_SIZE)
 background_image = pygame.image.load(BACKGROUND_IMAGE_PATH)
 background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
 
+
 def render_multi_color_text(text, font, colors):
     words = text.split()
     space = font.size(' ')[0]  # Space width
@@ -34,8 +35,9 @@ def render_multi_color_text(text, font, colors):
         color = colors[index % len(colors)]  # Cyclical color usage
         word_surface = font.render(word, True, color)
         images.append((word_surface, x_offset))
-        x_offset += word_surface.get_width() + space  # Increase offset by width and space
+        x_offset += word_surface.get_width() + space
     return images
+
 
 def start_menu():
     running = True
@@ -63,11 +65,13 @@ def start_menu():
         display_text(escape_text_surfaces, HEIGHT / 2 + 150)
         pygame.display.flip()
 
+
 def display_text(text_surfaces, y):
     for image, offset in text_surfaces:
         total_width = sum(img.get_width() for img, _ in text_surfaces) + \
                       (len(text_surfaces) - 1) * font.size(' ')[0]
         screen.blit(image, (WIDTH / 2 - total_width / 2 + offset, y))
+
 
 def game_loop():
     running_game = start_menu()
@@ -77,9 +81,10 @@ def game_loop():
                 pygame.quit()
                 sys.exit()
             elif event.type is pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:  # Use ESC to return to the menu
+                if event.key == pygame.K_ESCAPE:
                     running_game = False  # Stop game loop
                     start_menu()  # Re-calling start_menu
+
 
 if __name__ == "__main__":
     game_loop()
