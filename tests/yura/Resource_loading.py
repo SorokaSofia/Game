@@ -12,7 +12,7 @@ pygame.display.set_caption("PacMan")
 
 # Resource loading
 font = pygame.font.Font(None, 48)
-menu_sound = pygame.mixer.Sound('Paramind_cotton_eye_joe_mashup.mp3') 
+menu_sound = pygame.mixer.Sound('assets/Paramind_cotton_eye_joe_mashup.mp3') 
 menu_sound.set_volume(0.012)
 
 # Background image loading

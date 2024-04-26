@@ -13,7 +13,7 @@ WIDTH, HEIGHT = 900, 950
 FONT_SIZE = 48
 GAME_TITLE = "PacMan"
 BACKGROUND_IMAGE_PATH = 'assets/background_image/Background.jpg'
-MENU_SOUND_PATH = 'Paramind_cotton_eye_joe_mashup.mp3'
+MENU_SOUND_PATH = 'assets/Paramind_cotton_eye_joe_mashup.mp3'
 
 # Colors
 COLORS = [pygame.Color('Red'), pygame.Color('Green'), pygame.Color('Blue'), pygame.Color('Yellow')]

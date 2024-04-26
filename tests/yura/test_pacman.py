@@ -12,7 +12,7 @@ def init_pygame():
 def resource_setup():
     init_pygame()
     font = pygame.font.Font(None, 48)
-    menu_sound = pygame.mixer.Sound('Paramind_cotton_eye_joe_mashup.mp3')
+    menu_sound = pygame.mixer.Sound('assets/Paramind_cotton_eye_joe_mashup.mp3')
     return font, menu_sound
 
 def test_font_loaded(resource_setup):
