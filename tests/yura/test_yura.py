@@ -28,6 +28,3 @@ def test_display_text(setup_pygame, font):
     # Виклик функції з перехопленням виключення TypeError
     with pytest.raises(TypeError):
         display_text(text_surfaces, 300, font)
-
-
-
