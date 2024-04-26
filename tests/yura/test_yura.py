@@ -29,3 +29,4 @@ def test_display_text(setup_pygame, font):
     with pytest.raises(TypeError):
         display_text(text_surfaces, 300, font)
 
+
