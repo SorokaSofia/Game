@@ -83,12 +83,13 @@ def game_loop():
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:  
+                if event.key == pygame.K_ESCAPE:
                     # Use ESC to return to the menu
-                    running_game = False  
+                    running_game = False
                     # Stop game loop
-                    start_menu()  
+                    start_menu()
                     # Re-calling start_menu
+
 
 if __name__ == "__main__":
     game_loop()
