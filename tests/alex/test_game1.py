@@ -3,6 +3,7 @@ import pygame
 from pacman_for_test import render_multi_color_text
 from unittest.mock import patch
 
+
 # Assuming the font and COLORS are defined somewhere in your code, or provided here:
 pygame.init()
 font = pygame.font.Font(None, 48)  # Use a default font
