@@ -1,7 +1,6 @@
 import pytest
-
-# Assuming the move_player function is in the game_logic module
 from game_logic import move_player
+
 
 # A pytest fixture to set up the player environment
 @pytest.fixture
@@ -9,6 +8,7 @@ def player_setup():
     x, y = 100, 100  # Initial player position
     player_speed = 5  # Player speed
     return x, y, player_speed
+
 
 def test_move_player_right(player_setup):
     x, y, player_speed = player_setup
@@ -21,6 +21,7 @@ def test_move_player_right(player_setup):
     # Assert the expected results
     assert new_x == x + player_speed
     assert new_y == y
+
 
 def test_move_player_left(player_setup):
     x, y, player_speed = player_setup
