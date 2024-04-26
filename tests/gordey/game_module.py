@@ -1,6 +1,8 @@
 from random import randint
 
+
 class Ghost:
+
     def __init__(self, name, mode, position):
         self.name = name
         self.mode = mode
