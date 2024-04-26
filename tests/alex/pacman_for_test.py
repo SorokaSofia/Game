@@ -3,9 +3,6 @@ import sys
 import copy
 import math
 
-
-
-
 # Initialize Pygame
 pygame.init()
 
