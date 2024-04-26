@@ -24,4 +24,3 @@ def test_display_text(setup_pygame):
     # Assuming 'display_text' does not take a 'font' argument
     with pytest.raises(TypeError):
         display_text(text_surfaces, 300, font)
-          # Incorrect number of arguments
