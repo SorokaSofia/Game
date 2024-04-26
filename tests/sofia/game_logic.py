@@ -1,9 +1,7 @@
-import pygame
-
 def move_player(x, y, direction, turns_allowed, player_speed):
     """
     Moves the player based on the given direction and allowed turns.
-    
+
     Parameters:
         x (int): The current x-coordinate of the player.
         y (int): The current y-coordinate of the player.
@@ -12,7 +10,7 @@ def move_player(x, y, direction, turns_allowed, player_speed):
         turns_allowed (list of bool): A list indicating which directions are permissible.
                                       [right_allowed, left_allowed, up_allowed, down_allowed]
         player_speed (int): The speed at which the player moves.
-    
+
     Returns:
         tuple: The new x and y coordinates of the player after movement.
     """
