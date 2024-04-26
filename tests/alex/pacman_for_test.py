@@ -2,7 +2,7 @@ import pygame
 import sys
 import copy
 import math
-from board import boards
+
 
 # Initialize Pygame
 pygame.init()
