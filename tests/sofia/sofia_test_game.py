@@ -1,5 +1,4 @@
 import pytest
-import pygame
 
 # Assuming the move_player function is in the game_logic module
 from game_logic import move_player
