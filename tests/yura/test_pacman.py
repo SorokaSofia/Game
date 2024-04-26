@@ -8,12 +8,6 @@ def init_pygame():
     pygame.init()
 
 @pytest.fixture
-def resource_setup():
-    init_pygame()
-    font = pygame.font.Font(None, 48)
-    return font
-
-
 def test_background_image_loading():
     init_pygame()
     assert os.path.exists('assets/background_image/Background.jpg'), "Background image file does not exist"
