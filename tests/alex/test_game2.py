@@ -1,6 +1,6 @@
 import pytest
 import pygame
-from tests.alex.pacman_for_test import start_menu, display_text
+from pacman_for_test import start_menu, display_text
 
 @pytest.fixture
 def setup_pygame():
