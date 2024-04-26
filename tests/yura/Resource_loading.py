@@ -1,18 +1,14 @@
 import pygame
 import sys
-import copy
-import math
 
 # Initialize Pygame
 pygame.init()
-
 
 # Constants
 WIDTH, HEIGHT = 900, 950
 FONT_SIZE = 48
 GAME_TITLE = "PacMan"
 BACKGROUND_IMAGE_PATH = 'assets/background_image/Background.jpg'
-
 
 # Colors
 COLORS = [pygame.Color('Red'), pygame.Color('Green'), pygame.Color('Blue'), pygame.Color('Yellow')]
@@ -22,10 +18,10 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption(GAME_TITLE)
 font = pygame.font.Font(None, FONT_SIZE)
 
-
 # Load and setup background image
 background_image = pygame.image.load(BACKGROUND_IMAGE_PATH)
 background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
+
 
 def render_multi_color_text(text, font, colors):
     words = text.split()
@@ -38,6 +34,7 @@ def render_multi_color_text(text, font, colors):
         images.append((word_surface, x_offset))
         x_offset += word_surface.get_width() + space  # Increase offset by the width of the word and space
     return images
+
 
 def start_menu():
     running = True
@@ -57,16 +54,19 @@ def start_menu():
         screen.blit(background_image, (0, 0))
         enter_text_surfaces = render_multi_color_text('Press Enter to Start', font, COLORS)
         escape_text_surfaces = render_multi_color_text('Press Escape to Exit', font, COLORS)
-        
+
         # Displaying text
         display_text(enter_text_surfaces, HEIGHT / 2 + 100)
         display_text(escape_text_surfaces, HEIGHT / 2 + 150)
         pygame.display.flip()
 
+
 def display_text(text_surfaces, y):
     for image, offset in text_surfaces:
-        total_width = sum(img.get_width() for img, _ in text_surfaces) + (len(text_surfaces) - 1) * font.size(' ')[0]
+        total_width = sum(img.get_width() for img, _ in text_surfaces) + \
+                      (len(text_surfaces) - 1) * font.size(' ')[0]
         screen.blit(image, (WIDTH / 2 - total_width / 2 + offset, y))
+
 
 def game_loop():
     running_game = start_menu()
