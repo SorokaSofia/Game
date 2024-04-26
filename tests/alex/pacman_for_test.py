@@ -2,6 +2,9 @@ import pygame
 import sys
 import copy
 import math
+import os
+os.environ['SDL_AUDIODRIVER'] = 'dsp'
+
 
 
 # Initialize Pygame
