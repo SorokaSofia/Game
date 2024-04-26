@@ -2,21 +2,20 @@ import pygame
 import sys
 import copy
 import math
-import os
-os.environ['SDL_AUDIODRIVER'] = 'dsp'
+
 
 
 
 # Initialize Pygame
 pygame.init()
-pygame.mixer.init()  # Sound initialization
+
 
 # Constants
 WIDTH, HEIGHT = 900, 950
 FONT_SIZE = 48
 GAME_TITLE = "PacMan"
 BACKGROUND_IMAGE_PATH = 'assets/background_image/Background.jpg'
-MENU_SOUND_PATH = 'assets/Paramind_cotton_eye_joe_mashup.mp3'
+
 
 # Colors
 COLORS = [pygame.Color('Red'), pygame.Color('Green'), pygame.Color('Blue'), pygame.Color('Yellow')]
@@ -26,9 +25,6 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption(GAME_TITLE)
 font = pygame.font.Font(None, FONT_SIZE)
 
-# Load and setup sounds
-menu_sound = pygame.mixer.Sound(MENU_SOUND_PATH)
-menu_sound.set_volume(0.012)
 
 # Load and setup background image
 background_image = pygame.image.load(BACKGROUND_IMAGE_PATH)
@@ -47,8 +43,6 @@ def render_multi_color_text(text, font, colors):
     return images
 
 def start_menu():
-    menu_sound.stop()
-    menu_sound.play(-1)
     running = True
     while running:
         for event in pygame.event.get():
