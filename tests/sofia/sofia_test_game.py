@@ -1,10 +1,9 @@
 import pytest
 from game_logic import move_player
 
+
 # A pytest fixture to set up the player environment
 @pytest.fixture
-
-
 def player_setup():
     x, y = 100, 100  # Initial player position
     player_speed = 5  # Player speed
