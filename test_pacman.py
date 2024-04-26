@@ -30,3 +30,4 @@ def test_background_image_loading():
     WIDTH, HEIGHT = 900, 950
     background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
     assert background_image.get_size() == (WIDTH, HEIGHT), "Background image not scaled correctly"
+
