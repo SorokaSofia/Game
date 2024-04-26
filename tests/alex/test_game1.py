@@ -1,6 +1,5 @@
 import pygame
 import pytest
-from unittest.mock import patch
 from pacman_for_test import render_multi_color_text
 
 # Initialize Pygame and set up fonts and colors
@@ -20,6 +19,7 @@ def setup_pygame():
     yield
     pygame.quit()
 
+@pytest.fixture
 def test_render_multi_color_text(setup_pygame):
     # Define the test scenario
     text = "Test this"
@@ -31,4 +31,3 @@ def test_render_multi_color_text(setup_pygame):
     for i, (surf, offset) in enumerate(result):
         # Checking the color of the first pixel on each rendered word surface, ignoring alpha channel
         assert pygame.Surface.get_at(surf, (0, 0))[:3] == expected_colors[i], f"Color mismatch at index {i}"
-
