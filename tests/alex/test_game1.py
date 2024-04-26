@@ -26,7 +26,6 @@ def test_render_multi_color_text(setup_pygame):
     # Define the test scenario
     text = "Test this"
     expected_colors = [(255, 0, 0), (0, 255, 0)]
-      # Expected RGB values, ignoring alpha
     result = render_multi_color_text(text, font, COLORS)
 
     # Assertions to validate the outcome
