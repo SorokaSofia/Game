@@ -4,12 +4,9 @@ import pygame
 import os
 
 # Function to initialize Pygame, which can be used in tests
-def init_pygame():
-    pygame.init()
 
 @pytest.fixture
 def test_background_image_loading():
-    init_pygame()
     assert os.path.exists('assets/background_image/Background.jpg'), "Background image file does not exist"
     background_image = pygame.image.load('assets/background_image/Background.jpg')
     WIDTH, HEIGHT = 900, 950

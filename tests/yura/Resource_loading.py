@@ -3,8 +3,6 @@ import pygame
 import sys
 import math
 
-pygame.init()
-
 WIDTH, HEIGHT = 900, 950
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("PacMan")
