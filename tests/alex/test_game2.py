@@ -2,6 +2,7 @@ import pytest
 import pygame
 from pacman_for_test import display_text
 
+
 @pytest.fixture
 def setup_pygame():
     # Initialize Pygame and set display mode
@@ -22,4 +23,5 @@ def test_display_text(setup_pygame):
     # Check display_text function call for errors
     # Assuming 'display_text' does not take a 'font' argument
     with pytest.raises(TypeError):
-        display_text(text_surfaces, 300, font)  # Incorrect number of arguments
+        display_text(text_surfaces, 300, font)
+          # Incorrect number of arguments

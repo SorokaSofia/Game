@@ -27,6 +27,7 @@ font = pygame.font.Font(None, FONT_SIZE)
 background_image = pygame.image.load(BACKGROUND_IMAGE_PATH)
 background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
 
+
 def render_multi_color_text(text, font, colors):
     words = text.split()
     space = font.size(' ')[0]  # Space width
@@ -39,11 +40,13 @@ def render_multi_color_text(text, font, colors):
         x_offset += word_surface.get_width() + space  # Adjust offset
     return images
 
+
 def display_text(text_surfaces, y):
     total_width = sum(img.get_width() for img, _ in text_surfaces) + \
         (len(text_surfaces) - 1) * font.size(' ')[0]
     for image, offset in text_surfaces:
         screen.blit(image, (WIDTH / 2 - total_width / 2 + offset, y))
+
 
 def start_menu():
     running = True
@@ -70,6 +73,7 @@ def start_menu():
         display_text(enter_text_surfaces, HEIGHT / 2 + 100)
         display_text(escape_text_surfaces, HEIGHT / 2 + 150)
         pygame.display.flip()
+
 
 def game_loop():
     running_game = start_menu()
