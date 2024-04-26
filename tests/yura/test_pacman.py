@@ -1,15 +1,26 @@
 import pytest
-import Resource_loading as Resource_loading
 import pygame
-import os
-
-# Function to initialize Pygame, which can be used in tests
+from Resource_loading import start_menu, display_text
 
 @pytest.fixture
-def test_background_image_loading():
-    assert os.path.exists('assets/background_image/Background.jpg'), "Background image file does not exist"
-    background_image = pygame.image.load('assets/background_image/Background.jpg')
-    WIDTH, HEIGHT = 900, 950
-    background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
-    assert background_image.get_size() == (WIDTH, HEIGHT), "Background image not scaled correctly"
+def setup_pygame():
+    pygame.init()
+    pygame.font.init()
+    pygame.display.set_mode((800, 600))
+    yield
+    pygame.quit()
 
+@pytest.fixture
+def font():
+    return pygame.font.Font(None, 48)
+
+def test_display_text(setup_pygame, font):
+    text_surfaces = [(pygame.Surface((100, 50)), 0), (pygame.Surface((120, 50)), 150)]
+    with pytest.raises(TypeError):
+        display_text(text_surfaces, 300, font)  # Passing font as additional argument
+
+def test_game_loop_exit(setup_pygame, mocker):
+    mocker.patch('pacman_for_test.start_menu', return_value=False)
+    mocker.patch('pygame.event.get', return_value=[pygame.event.Event(pygame.QUIT)])
+    with pytest.raises(SystemExit):
+        start_menu()
