@@ -1,5 +1,5 @@
 import pytest
-import tests.yura.Resource_loading as Resource_loading
+import Resource_loading as Resource_loading
 import pygame
 import os
 
